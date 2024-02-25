@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multi-Language Translator</title>
+<style>
+  /* CSS styles for the UI */
+</style>
+</head>
+<body>
+<h1>Multi-Language Translator</h1>
+<textarea id="inputText" placeholder="Enter text in English"></textarea>
+<button onclick="translate()">Translate</button>
+<div id="output"></div>
+
+<script>
+async function translate() {
+  const inputText = document.getElementById('inputText').value;
+
+  // Define the target languages
+  const targetLanguages = ['ko', 'fi', 'th', 'hu', 'ar', 'zh-Hant', 'ru', 'mn', 'en'];
+
+  // Translate input text to each target language sequentially
+  for (const language of targetLanguages) {
+    const translation = await translateText(inputText, language);
+    displayTranslation(language, translation);
+  }
+}
+
+async function translateText(text, targetLanguage) {
+  const subscriptionKey = 'f989c44153d148f1a1d480c46cef6368';
+  const endpoint = 'https://api.cognitive.microsofttranslator.com/translate';
+  const params = `?api-version=3.0&to=${targetLanguage}`;
+  const response = await fetch(endpoint + params, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Ocp-Apim-Subscription-Key': subscriptionKey
+    },
+    body: JSON.stringify([{ 'Text': text }])
+  });
+  const data = await response.json();
+  return data[0].translations[0].text;
+}
+
+function displayTranslation(language, translation) {
+  const outputDiv = document.getElementById('output');
+  const translatedText = document.createElement('p');
+  translatedText.textContent = `${language.toUpperCase()}: ${translation}`;
+  outputDiv.appendChild(translatedText);
+}
+</script>
+</body>
+</html>
