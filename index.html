@@ -1,65 +1,21 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Basic Pong HTML Game</title>
-    <meta charset="UTF-8">
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-        }
-
-        body {
-            background: black;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Browser</title>
 </head>
+
 <body>
-    <canvas width="750" height="585" id="game"></canvas>
-    <script>
-        const canvas = document.getElementById('game');
-        const context = canvas.getContext('2d');
-        const grid = 15;
-        const paddleHeight = grid * 5; // 80
-
-        // Define left and right paddles
-        const leftPaddle = {
-            x: grid * 2,
-            y: canvas.height / 2 - paddleHeight / 2,
-            width: grid,
-            height: paddleHeight,
-            dy: 0 // paddle velocity
-        };
-
-        const rightPaddle = {
-            x: canvas.width - grid * 3,
-            y: canvas.height / 2 - paddleHeight / 2,
-            width: grid,
-            height: paddleHeight,
-            dy: 0 // paddle velocity
-        };
-
-        // Define the ball
-        const ball = {
-            x: canvas.width / 2,
-            y: canvas.height / 2,
-            width: grid,
-            height: grid,
-            resetting: false, // keep track of when to reset the ball position
-            // ball velocity (start going to the top-right corner)
-            dx: ballSpeed,
-            dy: -ballSpeed
-        };
-
-        // Your game logic and rendering code goes here...
-        // (e.g., update paddles, ball movement, collision detection, etc.)
-
-        // Feel free to explore and enhance this basic implementation!
-    </script>
+  <h1>
+    BSB City Github site.
+  </h1>
+  <p>
+    21st century stupidity.
+  </p>
+  <script src="script.js"></script>
 </body>
-</html>
 
+</html>
